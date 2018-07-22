@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:b0="http://sap.com/xi/BASIS" targetNamespace="http://sap.com/xi/BASIS">
+  <import location="./rootwsdl_importedwsdl_1_IntegratedConfigurationInService.wsdl" namespace="http://sap.com/xi/BASIS"/>
+  <service name="IntegratedConfigurationInService">
+    <port binding="b0:IntegratedConfigurationInBinding" name="IntegratedConfigurationInPort">
+      <address xmlns="http://schemas.xmlsoap.org/wsdl/soap/" location="http://dbp-a01.rdc.local:50200/IntegratedConfigurationInService/IntegratedConfigurationInImplBean"/>
+    </port>
+  </service>
+</definitions>

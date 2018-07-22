@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:p0="urn:ChangeListServiceWsd/HTTPBasicAuth" xmlns:p1="urn:ChangeListServiceWsd/HTTPSBasicAuth" xmlns:tns="urn:ChangeListServiceWsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:ChangeListServiceWsd">
+  <wsdl:import location="./rootwsdl_importedwsdl_1_ChangeListService.wsdl" namespace="urn:ChangeListServiceWsd/HTTPBasicAuth"/>
+  <wsdl:import location="./rootwsdl_importedwsdl_3_ChangeListService.wsdl" namespace="urn:ChangeListServiceWsd/HTTPSBasicAuth"/>
+  <wsdl:service name="ChangeListService">
+    <wsdl:port binding="p0:HTTPBasicAuthBinding" name="HTTPBasicAuthPort">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://dbp-a01.rdc.local:50200/ChangeListService/HTTPBasicAuth?style=document"/>
+    </wsdl:port>
+    <wsdl:port binding="p1:HTTPSBasicAuthBinding" name="HTTPSBasicAuthPort">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="https://dbp-a01.rdc.local:50201/ChangeListService/HTTPSBasicAuth?style=document"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

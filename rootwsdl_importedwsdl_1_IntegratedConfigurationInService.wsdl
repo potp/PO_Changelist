@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:p1="http://sap.com/xi/BASIS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="http://sap.com/xi/BASIS">
+  <Policy xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" wsu:Id="P1">
+    <ExactlyOne>
+      <All>
+        <wsp:ExactlyOne>
+          <!--Binding for AuthenticationMethod sapsp:HTTPBasic-->
+          <wsp:All>
+            <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+              <wsp:Policy>
+                <sp:TransportToken>
+                  <wsp:Policy>
+                    <!--AuthenticationMethod sapsp:HTTPBasic-->
+                    <sp:HttpsToken>
+                      <wsp:Policy>
+                        <sp:HttpBasicAuthentication/>
+                      </wsp:Policy>
+                    </sp:HttpsToken>
+                  </wsp:Policy>
+                </sp:TransportToken>
+                <sp:AlgorithmSuite>
+                  <wsp:Policy>
+                    <sp:TripleDesRsa15/>
+                  </wsp:Policy>
+                </sp:AlgorithmSuite>
+                <sp:Layout>
+                  <wsp:Policy>
+                    <sp:Strict/>
+                  </wsp:Policy>
+                </sp:Layout>
+              </wsp:Policy>
+            </sp:TransportBinding>
+          </wsp:All>
+        </wsp:ExactlyOne>
+      </All>
+    </ExactlyOne>
+  </Policy>
+  <UsingPolicy xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+<wsdl:import location="./rootwsdl_importedwsdl_2_IntegratedConfigurationInService.wsdl" namespace="http://sap.com/xi/BASIS"/>
+<wsdl:binding name="IntegratedConfigurationInBinding" type="p1:IntegratedConfigurationIn">
+    <PolicyReference xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#P1"/>
+<soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Check">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Change">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Query">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Create">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Revert">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Read">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Delete">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="OpenForEdit">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+</wsdl:definitions>

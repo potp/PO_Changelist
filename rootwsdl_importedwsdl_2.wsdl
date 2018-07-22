@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:ns0="urn:CommunicationChannelServiceVi" xmlns:tns="urn:CommunicationChannelServiceWsd/CommunicationChannelServiceVi" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:CommunicationChannelServiceWsd/CommunicationChannelServiceVi">
+<wsdl:types>
+<xs:schema xmlns:s0="urn:com.sap.aii.ib.server.api.types" xmlns:tns="urn:com.sap.aii.ibdir.server.api.types" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:com.sap.aii.ibdir.server.api.types">
+<xs:import namespace="urn:com.sap.aii.ib.server.api.types"/>
+<xs:complexType name="GenericTableRow">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ValueTableCell" nillable="true" type="tns:GenericTableRowTableCell"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GenericTableRowTableCell">
+<xs:sequence>
+<xs:element minOccurs="0" name="ColumnName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageItem">
+<xs:sequence>
+<xs:element minOccurs="0" name="SeverityCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ClassificationCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Message" nillable="true" type="tns:Text"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Text">
+<xs:sequence>
+<xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelTemplateBased">
+<xs:sequence>
+<xs:element minOccurs="0" name="MasterLanguage" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdministrativeData" nillable="true" type="s0:ObjectAdministrativeDataRestricted"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Description" nillable="true" type="s0:LONG_Description"/>
+<xs:element minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+<xs:element minOccurs="0" name="ChannelTemplate" nillable="true" type="tns:DesignObjectID"/>
+<xs:element minOccurs="0" name="AdapterEngineName" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificAttribute" nillable="true" type="tns:GenericProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificTableAttribute" nillable="true" type="tns:GenericPropertyTable"/>
+<xs:element minOccurs="0" name="ModuleProcess" nillable="true" type="tns:ModuleProcess"/>
+<xs:element minOccurs="0" name="SenderIdentifier" nillable="true" type="tns:ChannelAdditionalIdentifier"/>
+<xs:element minOccurs="0" name="ReceiverIdentifier" nillable="true" type="tns:ChannelAdditionalIdentifier"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelID">
+<xs:sequence>
+<xs:element minOccurs="0" name="PartyID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ComponentID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ChannelID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DesignObjectID">
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Namespace" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SoftwareComponentVersionID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GenericProperty">
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GenericPropertyTable">
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ValueTableRow" nillable="true" type="tns:GenericTableRow"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ModuleProcess">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ProcessStep" nillable="true" type="tns:ProcessStep"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ParameterGroup" nillable="true" type="tns:ParameterGroup"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ProcessStep">
+<xs:sequence>
+<xs:element minOccurs="0" name="ModuleName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ModuleType" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ParameterGroupID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ParameterGroup">
+<xs:sequence>
+<xs:element minOccurs="0" name="ParameterGroupID" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Parameter" nillable="true" type="tns:GenericPropertyRestricted"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GenericPropertyRestricted">
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ChannelAdditionalIdentifier">
+<xs:sequence>
+<xs:element minOccurs="0" name="schemeID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="schemeAgencyID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelQueryOut">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+<xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageCollection">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessage" nillable="true" type="tns:LogMessage"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageChangeList" nillable="true" type="tns:LogMessageChangeList"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageParty" nillable="true" type="tns:LogMessageParty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessSystem" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessComponent" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageIntegrationProcess" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationChannel" nillable="true" type="tns:LogMessageCommunicationChannel"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageSenderAgreement" nillable="true" type="tns:LogMessageMessageHeader"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverAgreement" nillable="true" type="tns:LogMessageMessageHeader"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageInterfaceDetermination" nillable="true" type="tns:LogMessageMessageHeader"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverDetermination" nillable="true" type="tns:LogMessageMessageHeader"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageValueMapping" nillable="true" type="tns:LogMessageValueMapping"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageConfigurationScenario" nillable="true" type="tns:LogMessageConfigurationScenario"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessage">
+<xs:sequence>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageChangeList">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeListID" nillable="true" type="s0:ChangeListID"/>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageParty">
+<xs:sequence>
+<xs:element minOccurs="0" name="PartyID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageCommunicationComponent">
+<xs:sequence>
+<xs:element minOccurs="0" name="CommunicationComponentID" nillable="true" type="tns:CommunicationComponentID"/>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationComponentID">
+<xs:sequence>
+<xs:element minOccurs="0" name="PartyID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ComponentID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageCommunicationChannel">
+<xs:sequence>
+<xs:element minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageMessageHeader">
+<xs:sequence>
+<xs:element minOccurs="0" name="MessageHeader" nillable="true" type="tns:MessageHeaderID"/>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="MessageHeaderID">
+<xs:sequence>
+<xs:element minOccurs="0" name="SenderPartyID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SenderComponentID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="InterfaceName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="InterfaceNamespace" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ReceiverPartyID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ReceiverComponentID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageValueMapping">
+<xs:sequence>
+<xs:element minOccurs="0" name="ValueMappingID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LogMessageConfigurationScenario">
+<xs:sequence>
+<xs:element minOccurs="0" name="ConfigurationScenarioID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelIdentifierCollection">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelCreateChangeIn">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeListID" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannel" nillable="true" type="tns:CommunicationChannelRestricted"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelRestricted">
+<xs:sequence>
+<xs:element minOccurs="0" name="MasterLanguage" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdministrativeData" nillable="true" type="s0:ObjectAdministrativeDataRestricted"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Description" nillable="true" type="s0:LONG_Description"/>
+<xs:element minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+<xs:element minOccurs="0" name="AdapterMetadata" nillable="true" type="tns:DesignObjectID"/>
+<xs:element minOccurs="0" name="Direction" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TransportProtocol" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TransportProtocolVersion" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MessageProtocol" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MessageProtocolVersion" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdapterEngineName" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificAttribute" nillable="true" type="tns:GenericProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificTableAttribute" nillable="true" type="tns:GenericPropertyTable"/>
+<xs:element minOccurs="0" name="ModuleProcess" nillable="true" type="tns:ModuleProcess"/>
+<xs:element minOccurs="0" name="SenderIdentifier" nillable="true" type="tns:ChannelAdditionalIdentifier"/>
+<xs:element minOccurs="0" name="ReceiverIdentifier" nillable="true" type="tns:ChannelAdditionalIdentifier"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelCreateFromTemplateIn">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeListID" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannel" nillable="true" type="tns:CommunicationChannelTemplateBased"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelReadOut">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannel" nillable="true" type="tns:CommunicationChannel"/>
+<xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannel">
+<xs:sequence>
+<xs:element minOccurs="0" name="MasterLanguage" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdministrativeData" nillable="true" type="s0:ObjectAdministrativeData"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Description" nillable="true" type="s0:LONG_Description"/>
+<xs:element minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+<xs:element minOccurs="0" name="AdapterMetadata" nillable="true" type="tns:DesignObjectID"/>
+<xs:element minOccurs="0" name="Direction" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TransportProtocol" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TransportProtocolVersion" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MessageProtocol" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MessageProtocolVersion" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AdapterEngineName" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificAttribute" nillable="true" type="tns:GenericProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificTableAttribute" nillable="true" type="tns:GenericPropertyTable"/>
+<xs:element minOccurs="0" name="ModuleProcess" nillable="true" type="tns:ModuleProcess"/>
+<xs:element minOccurs="0" name="SenderIdentifier" nillable="true" type="tns:ChannelAdditionalIdentifier"/>
+<xs:element minOccurs="0" name="ReceiverIdentifier" nillable="true" type="tns:ChannelAdditionalIdentifier"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelReadIn">
+<xs:sequence>
+<xs:element minOccurs="0" name="ReadContext" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ConfigurationObjectModifyOut">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeListID" nillable="true" type="s0:ChangeListID"/>
+<xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelOpenForEditOut">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeListID" nillable="true" type="s0:ChangeListID"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannel" nillable="true" type="tns:CommunicationChannel"/>
+<xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelQueryIn">
+<xs:sequence>
+<xs:element minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+<xs:element minOccurs="0" name="Description" nillable="true" type="s0:LONG_Description"/>
+<xs:element minOccurs="0" name="AdministrativeData" nillable="true" type="s0:ObjectAdministrativeData"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CommunicationChannelDeleteOpenForEditIn">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeListID" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfGenericPropertyRestricted">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="GenericPropertyRestricted" nillable="true" type="tns:GenericPropertyRestricted"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfGenericTableRow">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="GenericTableRow" nillable="true" type="tns:GenericTableRow"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessageParty">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageParty" nillable="true" type="tns:LogMessageParty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfGenericPropertyTable">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="GenericPropertyTable" nillable="true" type="tns:GenericPropertyTable"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessageConfigurationScenario">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageConfigurationScenario" nillable="true" type="tns:LogMessageConfigurationScenario"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfCommunicationChannelID">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfCommunicationChannelTemplateBased">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelTemplateBased" nillable="true" type="tns:CommunicationChannelTemplateBased"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessage">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessage" nillable="true" type="tns:LogMessage"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfGenericProperty">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="GenericProperty" nillable="true" type="tns:GenericProperty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfCommunicationChannelRestricted">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelRestricted" nillable="true" type="tns:CommunicationChannelRestricted"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessageMessageHeader">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageMessageHeader" nillable="true" type="tns:LogMessageMessageHeader"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessageValueMapping">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageValueMapping" nillable="true" type="tns:LogMessageValueMapping"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessageCommunicationChannel">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationChannel" nillable="true" type="tns:LogMessageCommunicationChannel"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessageCommunicationComponent">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationComponent" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfGenericTableRowTableCell">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="GenericTableRowTableCell" nillable="true" type="tns:GenericTableRowTableCell"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLogMessageChangeList">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageChangeList" nillable="true" type="tns:LogMessageChangeList"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfCommunicationChannel">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannel" nillable="true" type="tns:CommunicationChannel"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfParameterGroup">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ParameterGroup" nillable="true" type="tns:ParameterGroup"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfProcessStep">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ProcessStep" nillable="true" type="tns:ProcessStep"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:s0="urn:com.sap.aii.ibdir.server.api.types" xmlns:tns="urn:CommunicationChannelServiceVi" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:CommunicationChannelServiceVi">
+<xs:import namespace="urn:com.sap.aii.ibdir.server.api.types"/>
+<xs:element name="change">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelChangeRequest" nillable="true" type="s0:CommunicationChannelCreateChangeIn"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="changeResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:ConfigurationObjectModifyOut"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="check">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelCheckRequest" nillable="true" type="s0:CommunicationChannelIdentifierCollection"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="checkResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:LogMessageCollection"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="create">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelCreateRequest" nillable="true" type="s0:CommunicationChannelCreateChangeIn"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="createResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:ConfigurationObjectModifyOut"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="createFromTemplate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelCreateFromTemplateRequest" nillable="true" type="s0:CommunicationChannelCreateFromTemplateIn"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="createFromTemplateResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:ConfigurationObjectModifyOut"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="delete">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelDeleteRequest" nillable="true" type="s0:CommunicationChannelDeleteOpenForEditIn"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="deleteResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:ConfigurationObjectModifyOut"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="openForEdit">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelOpenForEditRequest" nillable="true" type="s0:CommunicationChannelDeleteOpenForEditIn"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="openForEditResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:CommunicationChannelOpenForEditOut"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="query">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelQueryRequest" nillable="true" type="s0:CommunicationChannelQueryIn"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="queryResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:CommunicationChannelQueryOut"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="read">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelReadRequest" nillable="true" type="s0:CommunicationChannelReadIn"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="readResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:CommunicationChannelReadOut"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="revert">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommunicationChannelRevertRequest" nillable="true" type="s0:CommunicationChannelIdentifierCollection"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="revertResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" nillable="true" type="s0:LogMessageCollection"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns:tns="urn:com.sap.aii.ib.server.api.types" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:com.sap.aii.ib.server.api.types">
+<xs:complexType name="ObjectAdministrativeDataRestricted">
+<xs:sequence>
+<xs:element minOccurs="0" name="ResponsibleUserAccountID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LONG_Description">
+<xs:sequence>
+<xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ChangeListID">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeListID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Description" nillable="true" type="tns:LONG_Description"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ObjectAdministrativeData">
+<xs:sequence>
+<xs:element minOccurs="0" name="ResponsibleUserAccountID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LastChangeDateTime" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="LastChangeUserAccountID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfLONG_Description">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="LONG_Description" nillable="true" type="tns:LONG_Description"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="changeIn_doc">
+<wsdl:part element="ns0:change" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="changeOut_doc">
+<wsdl:part element="ns0:changeResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="checkIn_doc">
+<wsdl:part element="ns0:check" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="checkOut_doc">
+<wsdl:part element="ns0:checkResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="createIn_doc">
+<wsdl:part element="ns0:create" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="createOut_doc">
+<wsdl:part element="ns0:createResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="createFromTemplateIn_doc">
+<wsdl:part element="ns0:createFromTemplate" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="createFromTemplateOut_doc">
+<wsdl:part element="ns0:createFromTemplateResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="deleteIn_doc">
+<wsdl:part element="ns0:delete" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="deleteOut_doc">
+<wsdl:part element="ns0:deleteResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="openForEditIn_doc">
+<wsdl:part element="ns0:openForEdit" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="openForEditOut_doc">
+<wsdl:part element="ns0:openForEditResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="queryIn_doc">
+<wsdl:part element="ns0:query" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="queryOut_doc">
+<wsdl:part element="ns0:queryResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="readIn_doc">
+<wsdl:part element="ns0:read" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="readOut_doc">
+<wsdl:part element="ns0:readResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="revertIn_doc">
+<wsdl:part element="ns0:revert" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="revertOut_doc">
+<wsdl:part element="ns0:revertResponse" name="parameters"/>
+</wsdl:message>
+<wsdl:portType name="CommunicationChannelServiceVi">
+<wsdl:operation name="change">
+<wsdl:input message="tns:changeIn_doc"/>
+<wsdl:output message="tns:changeOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="check">
+<wsdl:input message="tns:checkIn_doc"/>
+<wsdl:output message="tns:checkOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="create">
+<wsdl:input message="tns:createIn_doc"/>
+<wsdl:output message="tns:createOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="createFromTemplate">
+<wsdl:input message="tns:createFromTemplateIn_doc"/>
+<wsdl:output message="tns:createFromTemplateOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="delete">
+<wsdl:input message="tns:deleteIn_doc"/>
+<wsdl:output message="tns:deleteOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="openForEdit">
+<wsdl:input message="tns:openForEditIn_doc"/>
+<wsdl:output message="tns:openForEditOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="query">
+<wsdl:input message="tns:queryIn_doc"/>
+<wsdl:output message="tns:queryOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="read">
+<wsdl:input message="tns:readIn_doc"/>
+<wsdl:output message="tns:readOut_doc"/>
+</wsdl:operation>
+<wsdl:operation name="revert">
+<wsdl:input message="tns:revertIn_doc"/>
+<wsdl:output message="tns:revertOut_doc"/>
+</wsdl:operation>
+</wsdl:portType>
+</wsdl:definitions>

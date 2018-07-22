@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:ns0="urn:ChangeListServiceVi" xmlns:tns="urn:ChangeListServiceWsd/ChangeListServiceVi/document" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:ChangeListServiceWsd/ChangeListServiceVi/document">
+  <wsdl:types>
+    <xs:schema xmlns:s0="urn:com.sap.aii.ib.server.api.types" xmlns:tns="urn:com.sap.aii.ibdir.server.api.types" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:com.sap.aii.ibdir.server.api.types">
+      <xs:import namespace="urn:com.sap.aii.ib.server.api.types"/>
+      <xs:complexType name="ChangeListGetObjectIdentifiersOut">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PartyID" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessSystemID" nillable="true" type="tns:CommunicationComponentID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="BusinessComponentID" nillable="true" type="tns:CommunicationComponentID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="IntegrationProcessID" nillable="true" type="tns:CommunicationComponentID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="SenderAgreementID" nillable="true" type="tns:MessageHeaderID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ReceiverAgreementID" nillable="true" type="tns:MessageHeaderID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ReceiverDeterminationID" nillable="true" type="tns:MessageHeaderID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="InterfaceDeterminationID" nillable="true" type="tns:MessageHeaderID"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ValueMappingID" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ConfigurationScenarioID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CommunicationComponentID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PartyID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ComponentID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CommunicationChannelID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PartyID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ComponentID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ChannelID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MessageHeaderID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SenderPartyID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SenderComponentID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="InterfaceName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="InterfaceNamespace" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ReceiverPartyID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ReceiverComponentID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageCollection">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessage" nillable="true" type="tns:LogMessage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageChangeList" nillable="true" type="tns:LogMessageChangeList"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageParty" nillable="true" type="tns:LogMessageParty"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessSystem" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessComponent" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageIntegrationProcess" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationChannel" nillable="true" type="tns:LogMessageCommunicationChannel"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageSenderAgreement" nillable="true" type="tns:LogMessageMessageHeader"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverAgreement" nillable="true" type="tns:LogMessageMessageHeader"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageInterfaceDetermination" nillable="true" type="tns:LogMessageMessageHeader"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverDetermination" nillable="true" type="tns:LogMessageMessageHeader"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageValueMapping" nillable="true" type="tns:LogMessageValueMapping"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageConfigurationScenario" nillable="true" type="tns:LogMessageConfigurationScenario"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SeverityCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ClassificationCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="tns:Text"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Text">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageChangeList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeListID" nillable="true" type="s0:ChangeListID"/>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageParty">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PartyID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageCommunicationComponent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CommunicationComponentID" nillable="true" type="tns:CommunicationComponentID"/>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageCommunicationChannel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageMessageHeader">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MessageHeader" nillable="true" type="tns:MessageHeaderID"/>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageValueMapping">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ValueMappingID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LogMessageConfigurationScenario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ConfigurationScenarioID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ChangeListGetStateOut">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ChangeListCacheState">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Consumer" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="NotificationState" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="RefreshState" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ErrorMessage" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ChangeListCreateOut">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeListID" nillable="true" type="s0:ChangeListID"/>
+          <xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ChangeListGetCacheStateOut">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CacheState" nillable="true" type="tns:ChangeListCacheState"/>
+          <xs:element minOccurs="0" name="LogMessageCollection" nillable="true" type="tns:LogMessageCollection"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageConfigurationScenario">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageConfigurationScenario" nillable="true" type="tns:LogMessageConfigurationScenario"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfCommunicationChannelID">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationChannelID" nillable="true" type="tns:CommunicationChannelID"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessage">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessage" nillable="true" type="tns:LogMessage"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfCommunicationComponentID">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CommunicationComponentID" nillable="true" type="tns:CommunicationComponentID"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfMessageHeaderID">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="MessageHeaderID" nillable="true" type="tns:MessageHeaderID"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageParty">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageParty" nillable="true" type="tns:LogMessageParty"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageMessageHeader">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageMessageHeader" nillable="true" type="tns:LogMessageMessageHeader"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfChangeListCacheState">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ChangeListCacheState" nillable="true" type="tns:ChangeListCacheState"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageValueMapping">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageValueMapping" nillable="true" type="tns:LogMessageValueMapping"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageCommunicationChannel">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationChannel" nillable="true" type="tns:LogMessageCommunicationChannel"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageCommunicationComponent">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationComponent" nillable="true" type="tns:LogMessageCommunicationComponent"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageItem">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageItem" nillable="true" type="tns:LogMessageItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLogMessageChangeList">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LogMessageChangeList" nillable="true" type="tns:LogMessageChangeList"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:com.sap.aii.ib.server.api.types" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:com.sap.aii.ib.server.api.types">
+      <xs:complexType name="ChangeListID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeListID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="tns:LONG_Description"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LONG_Description">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ChangeListIDRestricted">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="tns:LONG_Description"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:s0="urn:com.sap.aii.ibdir.server.api.types" xmlns:s1="urn:com.sap.aii.ib.server.api.types" xmlns:tns="urn:ChangeListServiceVi" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:ChangeListServiceVi">
+      <xs:import namespace="urn:com.sap.aii.ib.server.api.types"/>
+      <xs:import namespace="urn:com.sap.aii.ibdir.server.api.types"/>
+      <xs:element name="activate">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChangeListActivateRequest" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="activateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Response" nillable="true" type="s0:LogMessageCollection"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkContent">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChangeListCheckContentRequest" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkContentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Response" nillable="true" type="s0:LogMessageCollection"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="create">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChangeListCreateRequest" nillable="true" type="s1:ChangeListIDRestricted"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Response" nillable="true" type="s0:ChangeListCreateOut"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCacheState">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChangeListGetCacheStateRequest" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCacheStateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Response" nillable="true" type="s0:ChangeListGetCacheStateOut"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getObjectIdentifiers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChangeListGetObjectIdentifiersRequest" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getObjectIdentifiersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Response" nillable="true" type="s0:ChangeListGetObjectIdentifiersOut"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getState">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChangeListGetStateRequest" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getStateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Response" nillable="true" type="s0:ChangeListGetStateOut"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="revert">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChangeListRevertRequest" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="revertResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Response" nillable="true" type="s0:LogMessageCollection"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="activateIn_doc">
+    <wsdl:part element="ns0:activate" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="activateOut_doc">
+    <wsdl:part element="ns0:activateResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="checkContentIn_doc">
+    <wsdl:part element="ns0:checkContent" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="checkContentOut_doc">
+    <wsdl:part element="ns0:checkContentResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createIn_doc">
+    <wsdl:part element="ns0:create" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createOut_doc">
+    <wsdl:part element="ns0:createResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCacheStateIn_doc">
+    <wsdl:part element="ns0:getCacheState" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCacheStateOut_doc">
+    <wsdl:part element="ns0:getCacheStateResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getObjectIdentifiersIn_doc">
+    <wsdl:part element="ns0:getObjectIdentifiers" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getObjectIdentifiersOut_doc">
+    <wsdl:part element="ns0:getObjectIdentifiersResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getStateIn_doc">
+    <wsdl:part element="ns0:getState" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getStateOut_doc">
+    <wsdl:part element="ns0:getStateResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="revertIn_doc">
+    <wsdl:part element="ns0:revert" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="revertOut_doc">
+    <wsdl:part element="ns0:revertResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="ChangeListServiceVi_Document">
+    <wsdl:operation name="activate">
+      <wsdl:input message="tns:activateIn_doc"/>
+      <wsdl:output message="tns:activateOut_doc"/>
+    </wsdl:operation>
+    <wsdl:operation name="checkContent">
+      <wsdl:input message="tns:checkContentIn_doc"/>
+      <wsdl:output message="tns:checkContentOut_doc"/>
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <wsdl:input message="tns:createIn_doc"/>
+      <wsdl:output message="tns:createOut_doc"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCacheState">
+      <wsdl:input message="tns:getCacheStateIn_doc"/>
+      <wsdl:output message="tns:getCacheStateOut_doc"/>
+    </wsdl:operation>
+    <wsdl:operation name="getObjectIdentifiers">
+      <wsdl:input message="tns:getObjectIdentifiersIn_doc"/>
+      <wsdl:output message="tns:getObjectIdentifiersOut_doc"/>
+    </wsdl:operation>
+    <wsdl:operation name="getState">
+      <wsdl:input message="tns:getStateIn_doc"/>
+      <wsdl:output message="tns:getStateOut_doc"/>
+    </wsdl:operation>
+    <wsdl:operation name="revert">
+      <wsdl:input message="tns:revertIn_doc"/>
+      <wsdl:output message="tns:revertOut_doc"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
